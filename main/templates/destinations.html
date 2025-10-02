@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Available Destinations</h1>
+  <ul>
+  {% for d in destinations %}
+    <li>{{ d.name }} ({{ d.country }}) - {{ d.description }}</li>
+  {% endfor %}
+  </ul>
+{% endblock %}
