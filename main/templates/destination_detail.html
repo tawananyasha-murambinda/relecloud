@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{ object.name }} ({{ object.country }})</h1>
+<p>{{ object.description }}</p>
+<a href="{% url 'destinations' %}">Back to all destinations</a>
+{% endblock %}

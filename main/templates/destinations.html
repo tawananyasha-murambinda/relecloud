@@ -1,9 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
-  <h1>Available Destinations</h1>
-  <ul>
-  {% for d in destinations %}
-    <li>{{ d.name }} ({{ d.country }}) - {{ d.description }}</li>
+<h1>Available Destinations</h1>
+<ul>
+  {% for destination in destinations %}
+    <li>
+      <a href="{% url 'destination-detail' destination.pk %}">
+        {{ destination.name }} ({{ destination.country }})
+      </a>
+    </li>
   {% endfor %}
-  </ul>
+</ul>
 {% endblock %}
