@@ -1,13 +1,24 @@
 {% extends "base.html" %}
+
 {% block content %}
-<h1>Available Destinations</h1>
-<ul>
-  {% for destination in destinations %}
-    <li>
-      <a href="{% url 'destination-detail' destination.pk %}">
-        {{ destination.name }} ({{ destination.country }})
-      </a>
-    </li>
-  {% endfor %}
-</ul>
+<h1>Destinations</h1>
+
+{% for destination in destinations %}
+    <div class="destination">
+        <h2>{{ destination.name }} ({{ destination.country }})</h2>
+        <p>{{ destination.description }}</p>
+
+        <h3>Cruises:</h3>
+        <ul>
+            {% for cruise in cruises %}
+                {% if cruise.destination.id == destination.id %}
+                    <li>{{ cruise.title }} - ${{ cruise.price }}</li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+{% empty %}
+    <p>No destinations available.</p>
+{% endfor %}
+
 {% endblock %}
